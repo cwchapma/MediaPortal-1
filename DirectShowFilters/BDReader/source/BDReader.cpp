@@ -717,6 +717,12 @@ STDMETHODIMP CBDReaderFilter::GetDuration(REFERENCE_TIME* pDuration)
   return NOERROR;
 }
 
+STDMETHODIMP CBDReaderFilter::GetAudioCount(long lIndex)
+{
+  int AudioCount = m_demultiplexer.GetAudioChannelCount((int)lIndex);  
+  return AudioCount;
+}
+
 STDMETHODIMP CBDReaderFilter::Load(LPCOLESTR pszFileName, const AM_MEDIA_TYPE *pmt)
 {
   LogDebug("CBDReaderFilter::Load()");

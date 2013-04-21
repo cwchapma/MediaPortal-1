@@ -94,6 +94,7 @@ public:
     virtual HRESULT STDMETHODCALLTYPE MouseMove(UINT16 x, UINT16 y) = 0;
     virtual HRESULT STDMETHODCALLTYPE SetVideoDecoder(int format, GUID* decoder) = 0;
     virtual HRESULT STDMETHODCALLTYPE SetVC1Override(GUID* subtype) = 0;
+	virtual HRESULT STDMETHODCALLTYPE GetAudioCount(long lIndex) = 0;
 };
 
 enum DS_CMD_ID
@@ -138,7 +139,7 @@ private:
   // IAMStreamSelect
   STDMETHODIMP Count(DWORD* streamCount);
   STDMETHODIMP Enable(long index, DWORD flags);
-  STDMETHODIMP Info(long lIndex, AM_MEDIA_TYPE** ppmt, DWORD* pdwFlags, LCID* plcid, DWORD* pdwGroup, WCHAR** ppszName, IUnknown** ppObject, IUnknown** ppUnk);	
+  STDMETHODIMP Info(long lIndex, AM_MEDIA_TYPE** ppmt, DWORD* pdwFlags, LCID* plcid, DWORD* pdwGroup, WCHAR** ppszName, IUnknown** ppObject, IUnknown** ppUnk);
 
   // IAudioStream
   STDMETHODIMP GetAudioStream(__int32 &stream);
@@ -167,6 +168,7 @@ public:
   STDMETHODIMP MouseMove(UINT16 x, UINT16 y);
   STDMETHODIMP SetVideoDecoder(int format, GUID* decoder);
   STDMETHODIMP SetVC1Override(GUID* subtype);
+  STDMETHODIMP GetAudioCount(long lIndex);
 
   void STDMETHODCALLTYPE OnGraphRebuild(int info);
   void STDMETHODCALLTYPE ForceTitleBasedPlayback(bool force, UINT32 pTitle);
